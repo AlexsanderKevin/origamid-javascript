@@ -1,19 +1,17 @@
-// Duplicate the menu and add it to copy
-const MENU = document.querySelector('.menu')
-const COPY = document.querySelector('.copy')
+const tabMenu = document.querySelectorAll('.js-tabmenu li')
+const tabContent = document.querySelectorAll('.js-tabcontent section')
+tabContent[0].classList.add('ativo')
 
-const MENU_CLONE = MENU.cloneNode(true)
-COPY.appendChild(MENU_CLONE)
+if(tabMenu.length && tabContent.length){
 
-// Select the first DT from the FAQ's DL
-const FAQ = document.querySelector('.faq dl')
-const FIRST_DT = FAQ.children[0]
-
-// Select the first DT's DD 
-const FIRST_DD = FAQ.children[1]
-
-// Substitute the html content from .faq for .animais's
-const ANIMAIS = document.querySelector('.animais').innerHTML
-const FAQ_2 = document.querySelector('.faq').innerHTML
-
-FAQ.innerHTML = ANIMAIS
+    function activeTab(index) {
+        tabContent.forEach(section => {
+            section.classList.remove('ativo')
+        })
+        tabContent[index].classList.add('ativo')
+    }
+    
+    tabMenu.forEach((itemMenu, index) =>{
+        itemMenu.addEventListener('click', ()=> activeTab(index))
+    })
+}
