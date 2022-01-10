@@ -39,6 +39,7 @@ transacoes.forEach(transacao => {
 
 // Retorne uma array com a lista abaixo
 const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta'
+const arrayTransportes = transportes.split(';')
 
 // Substitua todos os span's por a's
 const html = `<ul>
@@ -47,8 +48,20 @@ const html = `<ul>
                 <li><span>Contato</span></li>
               </ul>`
 
+const htmlDividido = html.split('span')
+const htmlResposta = htmlDividido.join('a')
+
 // retorne o último caracter da frase 
 const frase = 'Melhor do ano!'
+// console.log(frase.charAt(frase.length -1))
 
 // retorne o total de taxas
 const transacoes2 = ['Taxa do Banco', 'TAXA DO PÃO', '  taxa do Mercado']
+
+let acumTaxa = 0
+transacoes2.forEach(item => {
+    if(item.toLowerCase().trim().startsWith('taxa')){
+        ++acumTaxa
+    }
+})
+console.log(acumTaxa)
