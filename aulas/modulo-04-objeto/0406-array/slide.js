@@ -7,13 +7,13 @@
     const dados = [new String('Tipo 1'), ['Carro', 'Portas', {cor: 'Amarelo'}]]
     // quanto mais tipos diferentes de dados estiverem na array, mais lentas serão as operações envolvendo-as
 
-    dados[2]('Ford')
+    dados[2] // ('Ford')
     dados[1][2].cor // azul
 
 // Construção de Arrays
     // Toda array herda os métodos e propriedades do protótipo do construtos Array
 
-    const instrumentos = ['Guitarra', 'Baixo', 'Violão']
+    const instrumentos3 = ['Guitarra', 'Baixo', 'Violão']
     const carros = new Array('Corola', 'Mustang', 'Honda')
 
     carros[1] // Mustang
@@ -105,3 +105,86 @@
 
     const carros5 = ['Ford', 'Fiat', 'VW', 'Honda']
     carros5.reverse() // ['Honda', 'VW', 'Fiat', 'Ford']
+
+// [].splice()
+    // [].splice(index, remover, item1, item2, ...) adiciona valores na array a partir do index. Remove a quantidade de itens que for parrada no segundo parâmetro (retorna esses itens)
+
+    const carros6 = ['Ford', 'Fiat', 'VW', 'Honda']
+    carros6.splice(1, 0, 'Kia', 'Mustang')
+    carros6 // ['Ford','Kia', 'Mustang', 'Fiat', 'VW', 'Honda']
+
+    carros6.splice(3, 2, 'Ferrari') // ['Fiat', 'VW']
+    carros6 // ['Ford','Kia', 'Mustang', 'Fiat', 'VW', 'Honda']
+
+//[].copyWithin()
+    // [].copyWithin(alvo, inicio, final) a partir do alvo, ele irá copiar a array começando do inicio até o final e vai preencher a mesma com essa cópia. Caso omita os valores de inicio e final, ele irá utilizar como inicio o 0 e final o valor total da array
+
+    ['Item1', 'Item2', 'Item3', 'Item4'].copyWithin(2, 0, 3)
+    // ['Item1', 'Item2', 'Item1', 'Item2']
+
+    ['Item1', 'Item2', 'Item3', 'Item4'].copyWithin(-1)
+    // ['Item1', 'Item2', 'Item3', 'Item1']
+
+// [].fill()
+    // [].fill(valor, inicio, final) preenche a array com o valor, do inicio até o fim
+
+    ['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana')
+    // ['Banana', 'Banana', 'Banana', 'Banana']
+
+    ['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana', 2)
+    // ['Item1', 'Item2', 'Banana', 'Banana']
+
+    ['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana', 1, 3)
+    // ['Item1', 'Banana', 'Banana', 'Item4']
+
+// Métodos de Acesso [].concat()
+    // Os métodos abaixo não modificam a array original, apenas retornam uma array modificada. 
+    // [].concat() irá concatenar a array com o valor passado
+
+    const transporte1 = ['Barco', 'Avião']
+    const transporte2 = ['Carro', 'Moto']
+    const transportes = transporte1.concat(transporte2)
+    // ['Barco', 'Avião', 'Carro', 'Moto'] // concatenar significa JUNTAR
+
+    const maisTransportes = [].concat(transporte1, transporte2, 'Van')
+    // ['Barco', 'Avião', 'Carro', 'Moto', 'Van']
+
+// [].includes(), [].indexOf() e [].lastIndexOf()
+    // [].includes(valor) veridica se a array possui o valor e retorna um BOOLEANO
+    // [].indexOf(valor) verifica se a aarray possui o valor e retorna o index do primeiro valor na array, caso exista
+    // [].lastIndexOf(valor) retorna o index do ultimo valor passado
+
+    const linguagens = ['html', 'css', 'js', 'php', 'python', 'js']
+
+    linguagens.includes('css') // true
+    linguagens.includes('ruby') // false
+    
+    linguagens.indexOf('python') // 4
+    linguagens.indexOf('js') // 2
+    
+    linguagens.lastIndexOf('js') // 5
+
+// [].join() 
+    // [].join(separador) junta todos os valores da array e retorna uma string com eles. Se você passar um valor como parametro, este será utilizado durante a junção de cada item da array
+    const linguagens2 = ['html', 'css', 'js', 'php', 'python']
+    linguagens2.join() // 'html,css,js,php,python' // por padrão o argumento do join() é ',' -> [].join(',')
+    linguagens2.join('') // 'htmlcssjsphppython'
+    linguagens2.join(' ') // 'html css js php python'
+    linguagens2.join('-_-') // 'html-_-css-_-php-_-python
+
+    let htmlString = '<h2>Título Principal</h2>'
+    htmlString = htmlString.split('h2')
+    // ['<', '>Título Principal</', '>']
+
+    htmlString = htmlString.join('h1')
+    // '<h2>Título Principal</h2>'
+
+// [].slice()
+    // [].slice(inicio, final) retorna os itens da array começando pelo inicio e indo até o valor de final
+    // vale lembrar que 'slice' significa 'fatia' então é como tirar uma fatia da array
+
+    const linguagens3 = ['html', 'css', 'js', 'php', 'python']
+    linguagens3.slice(3) // ['php', 'python'] // a fatia especificada pelos parametros é a que fica
+    linguagens3.slice(1, 4) // ['css', 'js', 'php']
+
+    const cloneLinguagens = linguagens3.slice() // quando não é passado nenhum parametro para slice(), o método simplesmente copia a array inteira
