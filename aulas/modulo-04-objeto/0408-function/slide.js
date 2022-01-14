@@ -92,3 +92,55 @@
         })
     
         filtro // Retorna os itens que possuem ativo
+    
+// functions.apply()
+    // O apply(this, [arg1, arg2, ...]) functiona como o call, a única diferença é que os argumentos da função são passados através de uma única array
+    const numeros3 = [3,4,6,1,34,44,32]
+    Math.max.apply(null, numeros3) // nota: diferente do call(), o apply não requer quer os parametros sejam passados inline, pode-se passa-los por uma variavel que contenha a array de argumentos
+    Math.max.call(null, 3, 4, 5, 6, 7, 20)
+
+    // podemos passar 'null' como argumento para o valor de 'this', caso a função não utilize o objeto principal para funcionar
+
+    // Apply vs Call
+        // A única diferença é a array como segundo argumento
+
+// function.bind()
+        // Diferente de call() e apply(), bind(this, arg1, arg2, ...) não irá exevutar a função mas sim retornar a mesma coisa com o novo contexto de this
+        const li = document.querySelectorAll('li')
+
+        const filtrarLi = Array.prototype.filter.bind(li, function(item){
+            return item.classList.contains('ativo')
+        })
+        filtrarLi() // nota: uma das diferenças para os metodos anteriores é que, para que seja retornado o resultado da função é necessário chama-la com os (). Os demais métodos não funcionam como callback, aparentemente, ou talvez funcionem dentro de uma arrow function, não sei.
+
+        // bind() é muito bom para encurtar funções:
+        const $ = document.querySelectorAll.bind(document) // nesse caso, foi passado apenas o valor de 'this', isso significa que os parametros poderão  ser passados quando o novo método for chamado
+        $('li') //  $('li') == document.querySelectorAll('li')
+
+        // Argumentos e Bind
+            // Não precisamos passar todos os argumentos no momento do bind, podemos passar os mesmos na nova função no momento da execução da mesma.
+            const carro = {
+                marca: 'Ford', 
+                ano: 2018,
+                acelerar: function(aceleracao, tempo){
+                    return `${this.marca} acelerou ${aceleracao} em ${tempo}`
+                }
+            }
+            carro.acelerar(100, 20)
+            // Ford acelerou 100 em 20
+
+            const honda = {
+                marca: 'Honda'
+            }
+            const acelerarHonda = carro.acelerar.bind(honda)
+            acelerarHonda(200, 10) // 'Honda acelerou 200 em 10'
+
+        // Argumentos Comuns
+            // Podemos passar argumentos padrão para uma função e retornar uma nova função.
+            function imc(altura, peso){
+                return peso / (altura * altura)
+            }
+            const imc180 = imc.bind(null, 1.80) // nota: nesse caso o primeiro argumento (alem do 'this') foi passado e o segundo foi omitido, de maneira que, ao chamar-se a função, o parametro passado na hora será referente ao segundo argumento, o parametro omitido.
+
+            imc(1.80, 70) // 21.6
+            imc180(70) // 21.6
