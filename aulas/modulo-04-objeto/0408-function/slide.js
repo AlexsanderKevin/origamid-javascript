@@ -105,7 +105,7 @@
         // A única diferença é a array como segundo argumento
 
 // function.bind()
-        // Diferente de call() e apply(), bind(this, arg1, arg2, ...) não irá exevutar a função mas sim retornar a mesma coisa com o novo contexto de this
+        // Diferente de call() e apply(), bind(this, arg1, arg2, ...) não irá executar a função mas sim retornar a mesma coisa com o novo contexto de this
         const li = document.querySelectorAll('li')
 
         const filtrarLi = Array.prototype.filter.bind(li, function(item){
