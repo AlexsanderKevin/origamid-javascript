@@ -1,7 +1,5 @@
 // Crie uma função que verifique corretamente o tipo de dado
-const showType = (target) => {
-    return Object.prototype.toString.call(target)
-}
+const showType = target => Object.prototype.toString.call(target)
 
 // console.log(showType(12))
 
@@ -30,3 +28,10 @@ Object.seal(configuracao)
 Object.preventExtensions(configuracao)
 
 // Liste o nome de todas as propriedades do protótipo de String e Array
+// const propriedadesString = Object.getOwnPropertyDescriptors(String.prototype) // nota: trata-se de um método do construtor Object, então de ver aplicado depois dele
+const propriedadesString = Object.getOwnPropertyNames(String.prototype) 
+
+// const propriedadesArray = Object.getOwnPropertyDescriptors(Array.prototype)
+const propriedadesArray = Object.getOwnPropertyNames(Array.prototype)
+
+console.log('String', propriedadesString, 'Array', propriedadesArray)
