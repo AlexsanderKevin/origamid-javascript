@@ -176,7 +176,7 @@
     // [].every(), se todos os returns das iterações forem 'truthy', o método irá retornar 'true'. Se pelo menos um for 'falsy', ele irá retornar 'false'
 
     // dados 'const frutas = frutas ^'
-    const arraysCheias = frutas.every((fruta) => fruta) // nesse caso, se pelo menos um dos itens da array for vazio, a função retornará 'false'
+    const arraysCheias = frutas.every(fruta => fruta) // nesse caso, se pelo menos um dos itens da array for vazio, a função retornará 'false'
     // nota: strings vazias sempre retornam 'false'
     // nota: as iterações param de ser executadas assim que é enconrado um valor 'false' e o método já retorna tal valor imediatamente
 
