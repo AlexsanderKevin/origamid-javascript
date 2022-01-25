@@ -34,8 +34,8 @@
 
 // Validação
     // O método "checkValidity" verifica se um input com o atributo "required" é valido ou não. A propriedade "validationMessage" possui uma mensagem padrâo de erro do browser. É possível modificar com "setCustomValidity('')"
-    <input class="email" name="email" id="email" required></input>
-    <span class="carro"></span>
+    // <input class="email" name="email" id="email" required></input>
+    // <span class="carro"></span>
 
     const form = document.getElementById('contato')
     function handleChange(event){
