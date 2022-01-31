@@ -77,3 +77,78 @@ const slide_7 = HTML_e_text => {
         document.querySelector('h1').innerText = titulo.innerText
     })
 }
+
+const slide_8 = blob => {
+    
+    // .blob()
+    // Um blob é um tipo de objeto utilizado para representação de dados de um arquivo. O blob pode ser utilizado para transformarmos requisições de imagens, por exemplo. O blob gera uma URL única.
+
+    const div = document.createElement('div') 
+
+    fetch('./imagem.png')
+    .then(response => response.blob())
+    .then(imgBlob => {
+        const blobUrl = URL.createObjectURL(imgBlob)
+        console.log(blobUrl)
+    })
+}
+
+const slide_9 = clone => {
+
+    // .clone()
+    // Ao utilizarmos os métodos acima, text, json e blob, a resposta é modificada. Por isso extiste o método .clone(), caso sejanecessário transformar uma resposta em diferentes valores.
+
+    const div = document.createElement('div')
+
+    fetch('http://viacep.com.br/ws/01001000/json/')
+    .then( response => {
+        const cloneResponse = response.clone()
+
+        response.json().then(json => console.log(json))
+
+        cloneResponse.text().then(text => console.log(text))
+    })
+}
+
+const slide_10 = headers => {
+
+    // .headers()
+    // É uma propriedade que possui os cabeçalhos da requisição. É um tipo de dadi uterável então podemos utilizar o forEach para vermos cada um deles.
+
+    fetch('http://viacep.com.br/ws/01001000/json/')
+    .then( response => {
+        response.headers.forEach(console.log)
+    })
+}
+
+const slide_11 = status_e_ok => {
+
+    // .status e .ok
+    // .status etorna o status da requisição. Se foi 404, 200, 202 e mais.
+    // .ok retorna um valor booleano sendo "true" para uma requisição de sucesso e "false" para uma sem sucesso.
+
+    fetch('http://viacep.com.br/ws/01001000/json/')
+    .then( response => {
+        console.log( response.status, response.ok)
+
+        if( response.status === 404 )
+            console.log('Página não encontrada')
+    })
+}
+
+const slide_12 = url_e_type => {
+    // .url e .type
+    // .url retorna o url da requisiçãi.
+    // .type retorna o tipo da resposta.
+
+    fetch('http://viacep.com.br/ws/01001000/json/')
+    .then( response => {
+        console.log(response.type, response.url)
+    } )
+
+    // types
+    // basic: feito na mesma origem // requisição no próprio servidor
+    // cors: feito em url body pode estar disponível // conexão com outro servidor
+    // error: erro de conexão
+    // opaque: no-cors, não permite acesso de outros sites
+}

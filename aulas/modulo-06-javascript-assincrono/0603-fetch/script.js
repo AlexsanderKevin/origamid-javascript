@@ -49,11 +49,69 @@ const style = fetch('./style.css')
 const sobre = fetch('./sobre.html')
 const div = document.createElement('div')
 
-sobre
-.then( res => res.text() )
-.then( body => {
-    div.innerHTML = body // nota: isso recebe o documento HTML inteiro do arquivo "sobre.html"
-    const titulo = div.querySelector('h1')
-    document.querySelector('h1').innerText = titulo.innerText
+// sobre
+// .then( res => res.text() )
+// .then( body => {
+//     div.innerHTML = body // nota: isso recebe o documento HTML inteiro do arquivo "sobre.html"
+//     const titulo = div.querySelector('h1')
+//     document.querySelector('h1').innerText = titulo.innerText
 
+// })
+
+const imagem = fetch('./imagem.png')
+// imagem
+// .then( res => res.blob())
+// .then(body => {
+//     const blobUrl = URL.createObjectURL(body)
+//     const imagemDom = document.querySelector('img')
+    
+//     imagemDom.src = blobUrl
+//     // nota: parece, também, ser a melhor maneira de utilizar imagens de sites externos.
+// })
+
+const cep2 = fetch('http://viacep.com.br/ws/01001000/json/')
+
+// cep2
+// .then( res => {
+
+//     const res2 = res.clone()
+
+//     res.text().then(texto => {
+//         console.log(texto)
+//     })
+
+//     // res.json() // nota: isso resultaria em um erro porque a linha acima já alterou a resposta
+
+//     res2.json().then(json => {
+//         console.log(json)
+//     })
+
+//     console.log(res) // nota: caso o corpo não seja alterado, a propriedade "bodyUsed" da resposta terá o valor "false", mas nesse caso o valor é "true"
+// })
+// .then(body => {
+//     console.log(body)
+// })
+
+// headers
+// imagem
+// .then( res => {
+//     console.log( res )
+//     res.headers.forEach(console.log)
+// })
+
+const constante = fetch('./imagem.pn')
+
+// constante
+// .then( res => {
+
+//     console.log( res.status )
+
+//     if( res.status === 404 )
+//         console.log('Página não encontrada!')
+// })
+
+constante
+.then( res => {
+    console.log( res.url )
+    console.log( res.type )
 })
