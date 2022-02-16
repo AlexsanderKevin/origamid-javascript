@@ -12,7 +12,7 @@ const Subclasses = slide_2 => {
         }
     }
 
-    class Moto extends Veiculo {
+    class Moto extends Veículo {
         empinar(){
             console.log('Empinou com ' + this.rodas + ' rodas')
         }
