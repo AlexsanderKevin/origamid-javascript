@@ -9,7 +9,7 @@ const ESLint = slide_2 => {
     // Padronizar e manter consistência entre diferentes códigos JavaScript
 
     // https://eslint.org
-}
+};
 
 const Instalar_ESLint = slide_3 => {
 
@@ -25,4 +25,4 @@ const Instalar_ESLint = slide_3 => {
         // Use Popular > Airbnb > (N)Enter > JSON > (Y)Enter
 
     // Instalar extensão ESLint do VS Code
-}
+};
