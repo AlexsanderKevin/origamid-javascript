@@ -1,0 +1,23 @@
+import outsideClick from './outsideclick.js';
+
+export default function initDropdownMenu() {
+    const dropdownMenus = document.querySelectorAll('[data-dropdown]');
+
+    function handleClick(event) {
+        event.preventDefault();
+        this.classList.add('active');
+
+        outsideClick(this, ['touchstart', 'click'], () => {
+            this.classList.remove('active');
+        });
+    }
+
+    dropdownMenus.forEach((menu) => {
+        ['touchstart', 'click'].forEach((userEvent) => {
+            menu.addEventListener(userEvent, handleClick);
+        });
+        // nota: para atribuir uma mesma função a varios eventos é possível
+        // atribuir tais eventos a um vetor e, para cada evento listado,
+        // aplicar o método.
+    });
+}
