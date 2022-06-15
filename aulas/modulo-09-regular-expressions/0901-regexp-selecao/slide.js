@@ -401,4 +401,4 @@ const Unicode_u = slide_32 => {
 
     'andre@origamid.com *copy-symbol'.replace(regepx, '---')
     // andre---origamid.com ---
-} adugfbadou    
+}
